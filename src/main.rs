@@ -1,28 +1,5 @@
-trait Quack {
-    fn quack(&self);
-}
-
-struct Duck();
-
-impl Quack for Duck {
-    fn quack(&self) {
-        println!("quack");
-    }
-}
-
-struct Bird {
-    is_a_parrot: bool,
-}
-
-impl Quack for Bird {
-    fn quack(&self) {
-        if !self.is_a_parrot {
-            println!("quack")
-        } else {
-            println!("sqwak")
-        }
-    }
-}
+mod oop;
+use crate::oop::animals::{Bird, Duck, Quack};
 
 fn main() {
     /***
