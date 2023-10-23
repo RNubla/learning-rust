@@ -1,6 +1,5 @@
 mod oop;
-use crate::oop::animals::{Bird, Duck, Quack};
-
+use crate::oop::animals::{Animal, Bird, Duck, Quack, Vehicle,Electric};
 fn main() {
     /***
      * The difference is that you can now take this vector, pass it as a reference or give it away without having to track any borrowed references. When the vector is dropped, the boxes will be dropped, and all memory is reclaimed.
@@ -14,4 +13,27 @@ fn main() {
     for d in &ducks {
         d.quack();
     }
+
+    let human = Animal::new("Human".to_string());
+    println!("{}",human.display_species());
+
+    let cat = Animal::new("Cat".to_string());
+    println!("{}",cat.display_species());
+
+    // let honda_civic = Vehicle::new("Honda".to_string(), true);
+    let mut tesla = Vehicle::new(Option::from(4u32), "Tesla".to_string(), true);
+
+    // println!("{:?}",tesla.get_charge());
+    if tesla.need_to_charge(){
+        println!("The car needs to be charged")
+    }else{
+        println!("The car is sufficiently charged")
+    }
+    tesla.set_charge(25u32);
+    if tesla.need_to_charge(){
+        println!("The car needs to be charged")
+    }else{
+        println!("The car is sufficiently charged")
+    }
+
 }
