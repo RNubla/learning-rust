@@ -1,5 +1,6 @@
 mod oop;
 use crate::oop::animals::{Animal, Bird, Duck, Quack};
+use crate::oop::shape::{Circle, Rectangle, Shape, Triangle};
 use crate::oop::vehicles::{Vehicle,Electric};
 fn main() {
     /***
@@ -24,7 +25,7 @@ fn main() {
     // let honda_civic = Vehicle::new("Honda".to_string(), true);
     let mut tesla = Vehicle::new(Option::from(4u32), "Tesla".to_string(), true);
 
-    // println!("{:?}",tesla.get_charge());
+
     if tesla.need_to_charge(){
         println!("The car needs to be charged")
     }else{
@@ -36,5 +37,8 @@ fn main() {
     }else{
         println!("The car is sufficiently charged")
     }
+
+    let triangle = Circle::new(4.00).area();
+    println!("{}", triangle)
 
 }

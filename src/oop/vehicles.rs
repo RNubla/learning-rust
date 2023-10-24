@@ -15,16 +15,9 @@ pub trait Electric{
     // fn get_charge(&self) -> u32;
     fn get_charge(&self) -> Result<u32, &'static str>;
     // fn get_range(&self) -> u32;
-    fn need_to_charge(&self) -> bool {
-        match self.get_charge() {
-            Ok(charge) => charge <= 20,
-            Err(e) => {
-                println!("Error checking charge: {}", e);
-                false // Assuming no need to charge if there's an error, or true if you want to charge on errors
-            },
-        }
-    }
+    fn need_to_charge(&self) -> bool;
 }
+
 
 impl Electric for Vehicle{
     fn set_charge(&mut self, charge_percentage: u32) {
@@ -38,6 +31,15 @@ impl Electric for Vehicle{
         match self.charge{
             Some(charge) => Ok(charge),
             None => Err("Charge not set for this vehicle.")
+        }
+    }
+    fn need_to_charge(&self) -> bool {
+        match self.get_charge() {
+            Ok(charge) => charge <= 20,
+            Err(e) => {
+                println!("Error checking charge: {}", e);
+                false // Assuming no need to charge if there's an error, or true if you want to charge on errors
+            },
         }
     }
 }
